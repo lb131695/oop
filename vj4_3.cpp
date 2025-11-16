@@ -1,17 +1,15 @@
 ﻿#include <iostream>
 #include <string>
 
-// ------------------------------
-// fix_spaces funkcija
-// ------------------------------
+
 void fix_spaces(std::string& text) {
 
-    // 1) Ukloni višestruke razmake
+
     for (size_t pos = text.find("  "); pos != std::string::npos; pos = text.find("  ")) {
         text.erase(pos, 1);
     }
 
-    // 2) Ukloni razmake prije zareza i točke
+
     for (size_t i = 1; i < text.size(); ++i) {
         if ((text[i] == ',' || text[i] == '.') && text[i - 1] == ' ') {
             text.erase(i - 1, 1);
@@ -19,7 +17,7 @@ void fix_spaces(std::string& text) {
         }
     }
 
-    // 3) Dodaj razmak nakon zareza, ako ga nema
+
     for (size_t i = 0; i < text.size(); ++i) {
         if (text[i] == ',') {
             if (i + 1 < text.size() && text[i + 1] != ' ') {
@@ -29,9 +27,7 @@ void fix_spaces(std::string& text) {
     }
 }
 
-// ------------------------------
-// MAIN za fix_spaces
-// ------------------------------
+
 int main() {
     std::string s = "Puno   razmaka ,i   tocka .";
 
@@ -41,3 +37,4 @@ int main() {
 
     return 0;
 }
+
